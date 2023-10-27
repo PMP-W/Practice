@@ -1,0 +1,39 @@
+//删除有序数组中的重复项（快慢指针，在原数组的基础上修改）
+int removeDuplicates(int* nums, int numsSize){
+    if(numsSize<=1)
+    return numsSize;
+    int p1=0;
+    int p2=1;
+    while(p2<numsSize)
+    {
+        if(nums[p1]!=nums[p2])
+        {
+            p1++;
+            nums[p1]=nums[p2];
+        }
+        p2++;
+    }
+    return (p1+1);
+
+}
+
+//合并两个有序数组 （双指针法，从后往前插，如果从前往后，会覆盖前面的值）
+void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n){
+    int l1=m-1;
+    int l2=n-1;
+    int l3=nums1Size-1;
+    while(l1>=0&&l2>=0)
+    {
+        if(nums1[l1]<=nums2[l2])//如果将比较后的数放在nums1前面，而不是从后面开始赋值，会导致前面的值被覆盖
+        {
+            nums1[l3--]=nums2[l2--];
+        }
+        else
+        nums1[l3--]=nums1[l1--];
+    }
+    while(l2>=0)
+    {
+        nums1[l3--]=nums2[l2--];
+    }
+
+}
