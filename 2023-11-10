@@ -1,0 +1,141 @@
+//删除链表的倒数第 N 个结点
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+ typedef struct ListNode ListNode;
+struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
+    if(head->next==NULL)
+    return NULL;
+    ListNode* p1=head;
+    ListNode* p2=head;
+
+    while(n)
+    {
+        p2=p2->next;
+        n--;
+    }
+    if(p2==NULL)
+    {
+        head=head->next;
+        return head;
+    }
+    while(p2->next)//找到要删除的节点
+    {
+        p1=p1->next;
+        p2=p2->next;
+    }
+    ListNode*del=p1->next;
+    p1->next=p1->next->next;
+    free(del);
+    del=NULL;
+
+    return head;
+}
+
+//环形链表
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+ typedef struct ListNode ListNode;
+bool hasCycle(struct ListNode *head) {
+    if(head==NULL)
+    return false;
+    ListNode*cur1=head;
+    ListNode*cur2=head;
+    while(cur2&&cur2->next)
+    {
+        cur1=cur1->next;
+        cur2=cur2->next->next;
+        if(cur1==cur2)
+        return true;
+    }
+    return false;
+}
+//环形链表||
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+ typedef struct ListNode ListNode;
+struct ListNode *detectCycle(struct ListNode *head) {
+    if(head==NULL)
+        return NULL;
+    ListNode*cur1=head;
+    ListNode*cur2=head;
+    while(cur2&&cur2->next)
+    {
+        cur1=cur1->next;
+        cur2=cur2->next->next;
+        if(cur1==cur2)
+        {
+            ListNode* meet=cur1;
+            while(head!=meet)
+            {
+                head=head->next;
+                meet=meet->next;
+            }
+            return meet;
+        }
+    }
+    return NULL;
+}
+
+//相交链表
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+ typedef struct ListNode ListNode;
+struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *headB) {
+    ListNode* curA=headA;
+    ListNode* curB=headB;
+    int lenA=0;
+    int lenB=0;
+    while(curA->next)
+    {
+        curA=curA->next;
+        lenA++;
+    }
+    while(curB->next)
+    {
+        curB=curB->next;
+        lenB++;
+    }
+    int n=abs(lenA-lenB);
+    ListNode* longlist=headA;
+    ListNode* shortlsit=headB;
+    if(lenA<lenB)
+    {
+        longlist=headB;
+        shortlsit=headA;
+    }
+    while(n)
+    {
+        longlist=longlist->next;
+        n--;
+    }
+    while(longlist&&shortlsit)
+    {
+        if(longlist==shortlsit)
+        return longlist;
+        longlist=longlist->next;
+        shortlsit=shortlsit->next;
+
+    }
+    return NULL;
+
+}
