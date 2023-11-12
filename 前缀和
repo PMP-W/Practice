@@ -1,4 +1,4 @@
-//求区间和
+//求区间和（洛谷）
 //#include<iostream>
 //#include<vector>
 //int nums[1000000];
@@ -25,7 +25,7 @@
 //	return 0;
 //}
 
-//和
+//和（洛谷）
 //#include<iostream>
 //using namespace std;
 //int main()
