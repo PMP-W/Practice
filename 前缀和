@@ -1,0 +1,45 @@
+//求区间和
+//#include<iostream>
+//#include<vector>
+//int nums[1000000];
+//int sum[1000000];
+//using namespace std;
+//int main()
+//{
+//	int n;
+//	cin >> n;
+//	for (int i = 1; i <= n; i++)
+//	{
+//		cin>>nums[i];
+//		sum[i] = sum[i - 1] + nums[i];
+//	}
+//	int m;
+//	cin >> m;
+//	while (m--)
+//	{
+//		int l, r;
+//		cin >> l >> r;
+//		cout << sum[r]-sum[l-1] << endl;
+//	}
+//
+//	return 0;
+//}
+
+//和
+//#include<iostream>
+//using namespace std;
+//int main()
+//{
+//	int n = 0;
+//	cin >> n;
+//	int sum = 0;
+//	int num;
+//	while (n--)
+//	{
+//		cin >> num;
+//		sum += num;
+//	}
+//	cout << sum;
+//
+//	return 0;
+//}
