@@ -162,3 +162,41 @@
 //    return head;
 //}
 
+//Acwing ½Ø¶ÏÊý×é
+#include<iostream>
+#include<vector>
+using namespace std;
+int sum[100005] = { 0 };
+int main()
+{
+	int n = 0;
+	cin >> n;
+	vector<int>nums;
+	for (int i = 0; i < n; i++)
+	{
+		int tmp = 0;
+		cin >> tmp;
+		nums.push_back(tmp);
+	}
+	for (int i = 1; i <= n; i++)
+	{
+		sum[i] = nums[i - 1]+sum[i-1];
+	}
+	int cnt = 0;
+	if (n < 3 || sum[n] % 3 != 0)
+	{
+		cout << 0;
+		return 0;
+
+	}
+	long long res = 0;
+	for (int i = 3; i <= n; i++)
+	{
+		if (sum[i - 2] == sum[n] / 3)cnt++;
+		if (sum[n] - sum[i - 1] == sum[n] / 3)res += cnt;
+	}
+
+	cout << res;
+
+	return 0;
+}
