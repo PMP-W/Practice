@@ -1,0 +1,82 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
+//AcWing 改变数组元素
+// 我写的
+//#include<iostream>
+//#include<vector>
+//#include<algorithm>
+//using namespace std;
+//int nums[200005];
+//int main()
+//{
+//	int t;
+//	cin >> t;
+//	while (t--)
+//	{
+//		int n;
+//		cin >> n;
+//		vector<int>v(n+2);
+//		v.assign(n+2, 0);
+//
+//		for (int i = 1; i <= n; i++)
+//		{
+//			cin >> nums[i];
+//			int minm = min(nums[i], i);
+//			int l = i - minm + 1, r = i;
+//			v[l] += 1;
+//			v[r + 1] -= 1;			
+//		}
+//		for (int i = 1; i <= n; i++)
+//		{
+//			v[i] += v[i - 1];
+//		}
+//		for (int i = 1; i <= n; i++)
+//		{
+//			if (v[i] > 1)
+//				v[i] = 1;
+//			cout << v[i] << " ";
+//		}
+//		cout << endl;
+//
+//
+//	}
+//
+//	return 0;
+//}
+
+//别人写的
+
+//#include <iostream>
+//#include <cstring>
+//#include <algorithm>
+//
+//using namespace std;
+//
+//const int N = 2 * 10e5 + 10;
+//
+//int a[N];
+//
+//int n;
+//
+//int main()
+//{
+//    int T;
+//    cin >> T;
+//    while (T--)
+//    {
+//        int n;
+//        cin >> n;
+//        for (int i = 1; i <= n; i++) cin >> a[i];
+//
+//        int l = N;
+//        for (int i = n; i >= 1; i--)
+//        {
+//            l = min(l, i - a[i] + 1);//更新边界
+//            if (l <= i) a[i] = 1;//i 在边界内，就更新元素
+//        }
+//
+//        for (int i = 1; i <= n; i++) cout << a[i] << " ";
+//        cout << endl;
+//    }
+//    return 0;
+//}
